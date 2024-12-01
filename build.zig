@@ -30,6 +30,9 @@ pub fn build(b: *std.Build) !void {
         const run_exe = b.addRunArtifact(exe);
         run_step.dependOn(&run_exe.step);
 
+        const output = b.addInstallArtifact(exe, .{});
+        b.getInstallStep().dependOn(&output.step);
+
         const unit_tests = b.addTest(.{
             .name = entry.name,
             .root_source_file = .{ .src_path = .{ .owner = b, .sub_path = sub_path } },
