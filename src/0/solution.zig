@@ -24,7 +24,7 @@ test "two" {
 
 pub fn main() !void {
     const out = std.io.getStdOut().writer();
-    try out.print("Day 1\n", .{});
+    try out.print("Day 0\n", .{});
     try out.print("\t1: {any}\n", .{one(puzzle_input)});
     try out.print("\t2: {any}\n", .{two(puzzle_input)});
 }
