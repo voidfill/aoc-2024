@@ -26,6 +26,7 @@ pub fn build(b: *std.Build) !void {
             .root_source_file = .{ .src_path = .{ .owner = b, .sub_path = sub_path } },
             .target = target,
             .optimize = optimize,
+            .link_libc = true,
         });
         const run_exe = b.addRunArtifact(exe);
         run_step.dependOn(&run_exe.step);
@@ -38,6 +39,7 @@ pub fn build(b: *std.Build) !void {
             .root_source_file = .{ .src_path = .{ .owner = b, .sub_path = sub_path } },
             .target = target,
             .optimize = optimize,
+            .link_libc = true,
         });
         const run_unit_tests = b.addRunArtifact(unit_tests);
         test_step.dependOn(&run_unit_tests.step);
