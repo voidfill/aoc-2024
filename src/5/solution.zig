@@ -46,8 +46,8 @@ pub fn one(input: []const u8) !u64 {
         while (itPages.next()) |page| {
             const pageNum = std.fmt.parseInt(u8, page, 10) catch unreachable;
 
-            for (notAllowedNums.arr[0..notAllowedNums.len]) |num| if (num == pageNum) continue :outer;
-            for (backwards[pageNum].arr[0..backwards[pageNum].len]) |num| notAllowedNums.push(num);
+            for (notAllowedNums.slice()) |num| if (num == pageNum) continue :outer;
+            for (backwards[pageNum].slice()) |num| notAllowedNums.push(num);
 
             if (i == middlePageIndex) middlePageNum = pageNum;
             i += 1;
